@@ -1,0 +1,10 @@
+version: "3"
+services:
+  webserver:
+    build:
+      context: ./bin
+    volumes:
+      - ${APP_ROOT-./laravel-5.3}:/var/www/html:rw
+      - ${VHOST_CONFIG-./000-default.conf}:/etc/apache2/sites-enabled/000-default.conf
+    ports:
+      - 9000:80
