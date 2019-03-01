@@ -8,3 +8,15 @@ services:
       - ${VHOST_CONFIG-./config/000-default.conf}:/etc/apache2/sites-enabled/000-default.conf
     ports:
       - 8080:80
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ${MYSQL_DATA_DIR-./data/mysql}:/var/lib/mysql
+      - ${MYSQL_LOG_DIR-./logs/mysql}:/var/log/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD-rootroot}
+      MYSQL_DATABASE: ${MYSQL_DATABASE-dockertest}
+      MYSQL_USER: ${MYSQL_USER-root}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD-rootroot}
