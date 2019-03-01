@@ -11,4 +11,4 @@ Run Laravel app inside Docker container.
     - Run `cp .env.example .env`
     - Run `php artisan key:generate`
 - Run `docker-composer up -d`
-- Open http://localhost:8080
+- Open http://localhost:8080 or you can see the phpinfo in http://localhost:8080/info.php
